@@ -1,0 +1,26 @@
+# ── Docker Image ──
+image:
+  repository: yourdockerhubusername/pet-store
+  tag: latest
+  pullPolicy: Always
+
+# ── App Replicas ──
+replicaCount: 2
+
+# ── Service ──
+service:
+  type: LoadBalancer
+  port: 80
+
+# ── Resources ──
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "100m"
+  limits:
+    memory: "128Mi"
+    cpu: "200m"
+
+# ── App Name ──
+appName: pet-store
+namespace: pet-store
