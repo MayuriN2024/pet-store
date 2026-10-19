@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PawsWorld - Your friendly online pet store. Browse dogs, cats, birds, and more!" />
+  <title>PawsWorld 🐾 - Pet Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">🐾</span>
+        <span class="logo-text">PawsWorld</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active" id="nav-home">Home</a></li>
+        <li><a href="#pets" class="nav-link" id="nav-pets">Pets</a></li>
+        <li><a href="#cart" class="nav-link" id="nav-cart">Cart <span class="cart-badge" id="cart-count">0</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">🌟 Trusted by 10,000+ Pet Lovers</div>
+      <h1 class="hero-title">Find Your <span class="highlight">Perfect</span><br/>Furry Friend</h1>
+      <p class="hero-subtitle">Discover adorable pets looking for a loving home. From playful puppies to majestic cats — your companion is waiting!</p>
+      <div class="hero-actions">
+        <a href="#pets" class="btn btn-primary" id="hero-browse-btn">Browse Pets 🐶</a>
+        <a href="#about" class="btn btn-secondary" id="hero-learn-btn">Learn More</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Pet Breeds</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">10k+</span><span class="stat-label">Happy Owners</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Rating</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="floating-card card-1">🐕 Golden Retriever</div>
+        <div class="floating-card card-2">😺 Persian Cat</div>
+        <div class="floating-card card-3">🐇 Holland Lop</div>
+        <div class="big-emoji">🐾</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORY FILTERS ===== -->
+  <section class="pets-section" id="pets">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Meet Our Pets</h2>
+        <p class="section-sub">Hand-picked, healthy, and ready to join your family</p>
+      </div>
+
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" data-filter="all" id="filter-all">All Pets 🐾</button>
+        <button class="filter-btn" data-filter="dog" id="filter-dog">Dogs 🐕</button>
+        <button class="filter-btn" data-filter="cat" id="filter-cat">Cats 🐈</button>
+        <button class="filter-btn" data-filter="bird" id="filter-bird">Birds 🦜</button>
+        <button class="filter-btn" data-filter="rabbit" id="filter-rabbit">Rabbits 🐇</button>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" id="search-input" class="search-input" placeholder="🔍  Search pets by name or breed..." />
+      </div>
+
+      <!-- PET CARDS GRID -->
+      <div class="pets-grid" id="pets-grid">
+        <!-- Injected by JS -->
+      </div>
+
+      <p class="no-results hidden" id="no-results">😿 No pets found. Try a different filter!</p>
+    </div>
+  </section>
+
+  <!-- ===== CART PANEL ===== -->
+  <section class="cart-section" id="cart">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Your Cart 🛒</h2>
+        <p class="section-sub">Review and checkout your chosen companions</p>
+      </div>
+      <div class="cart-layout">
+        <div class="cart-items" id="cart-items">
+          <div class="cart-empty" id="cart-empty">
+            <span class="empty-icon">🛒</span>
+            <p>Your cart is empty. Add some adorable pets!</p>
+          </div>
+        </div>
+        <div class="cart-summary" id="cart-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-row"><span>Subtotal</span><span id="subtotal">$0</span></div>
+          <div class="summary-row"><span>Delivery</span><span class="free">FREE</span></div>
+          <div class="summary-divider"></div>
+          <div class="summary-row total"><span>Total</span><span id="total">$0</span></div>
+          <button class="btn btn-primary checkout-btn" id="checkout-btn" onclick="checkout()">Checkout 🎉</button>
+          <button class="btn btn-outline" id="clear-cart-btn" onclick="clearCart()">Clear Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Why Choose PawsWorld?</h2>
+        <p class="section-sub">We care about pets as much as you do</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">🏥</span>
+          <h3>Health Certified</h3>
+          <p>Every pet comes with a full vet checkup and health certificate.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🚚</span>
+          <h3>Safe Delivery</h3>
+          <p>Climate-controlled transport ensures pets arrive safely and happily.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">💬</span>
+          <h3>24/7 Support</h3>
+          <p>Our pet experts are always available to answer your questions.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🔄</span>
+          <h3>30-Day Guarantee</h3>
+          <p>Not a perfect fit? We'll help you rehome with no questions asked.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-logo">
+        <span>🐾</span> PawsWorld
+      </div>
+      <p class="footer-tagline">Making tails wag since 2024 ❤️</p>
+      <p class="footer-copy">© 2024 PawsWorld. Built for CI/CD learning purposes.</p>
+    </div>
+  </footer>
+
+  <!-- ===== TOAST NOTIFICATION ===== -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
