@@ -1,0 +1,21 @@
+---
+- name: Configure EKS Worker Nodes
+  hosts: localhost
+  tasks:
+    - name: Update kubeconfig
+      shell: |
+        aws eks update-kubeconfig \
+          --name pet-store-cluster \
+          --region us-east-1
+
+    - name: Verify nodes are ready
+      shell: kubectl get nodes
+      register: nodes_output
+
+    - name: Show nodes
+      debug:
+        msg: "{{ nodes_output.stdout }}"
+
+    - name: Create namespace
+      shell: |
+        kubectl create namespace pet-store --dry-run=client -o yaml | kubectl apply -f -
